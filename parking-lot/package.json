@@ -13,7 +13,8 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "0.0.4",
     "axios": "^0.20.0",
-    "element-ui": "^2.13.2",
+    "echarts": "^4.9.0",
+    "element-ui": "^2.14.0",
     "vue": "^2.5.2",
     "vue-axios": "^3.0.1",
     "vue-router": "^3.0.1"
