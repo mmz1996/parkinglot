@@ -98,18 +98,4 @@ export default {
 </script>
 
 <style scoped>
-  .com-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .com-chart {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  canvas {
-    border-radius: 20px;
-  }
 </style>
