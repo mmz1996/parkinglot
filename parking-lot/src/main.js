@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(ElementUI)
 Vue.prototype.$axios = axios
+Vue.prototype.$echarts = window.echarts
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

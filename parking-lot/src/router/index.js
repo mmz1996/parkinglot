@@ -5,11 +5,16 @@ import Management from '@/components/Management'
 import Log from '@/components/Log'
 import Setting from '@/components/Setting'
 import Home from '@/view/Home'
+import SellePage from '@/view/SellerPage'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/sellerpage',
+      component: SellePage
+    },
     {
       path: '/',
       name: 'home',
