@@ -1,16 +1,19 @@
 <template>
   <div class="com-page">
 <!--    <sellerpage></sellerpage>-->
-    <trendpage></trendpage>
+<!--    <trendpage></trendpage>-->
+    <mappage></mappage>
   </div>
 </template>
 <script>
 import SellerPage from '../view/SellerPage'
 import TrendPage from '../view/TrendPage'
+import MapPage from '../view/MapPage'
 export default {
   components: {
     sellerpage: SellerPage,
-    trendpage: TrendPage
+    trendpage: TrendPage,
+    mappage: MapPage
   },
   props: {},
   name: 'management',
