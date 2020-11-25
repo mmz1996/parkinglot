@@ -29,11 +29,11 @@ export default {
   },
   methods: {
     screenAdapter () {
-      const titleFontsize = this.$refs.seller.offsetWidth / 100 * 3.6
+      const titleFontsize = this.$refs.trend.offsetWidth / 100 * 3.6
       const adapterOption = {
         title: {
           textStyle: {
-            fontSize: 66
+            fontSize: 33
           }
         },
         tooltip: {
@@ -47,7 +47,7 @@ export default {
           {
             barWidth: titleFontsize,
             itemStyle: {
-              barBorderRadius: [0, titleFontsize / 2, titleFontsize / 2, 0],
+              barBorderRadius: [0, titleFontsize / 2, titleFontsize / 2, 0]
             }
           }
         ]
@@ -64,7 +64,7 @@ export default {
         title: {
           text: '   车场车位使用状况',
           textStyle: {
-            fontSize: 66
+            fontSize: 33
           },
           left: 20,
           top: 20
@@ -80,7 +80,7 @@ export default {
           type: 'value'
         },
         yAxis: {
-          type: 'category',
+          type: 'category'
         },
         tooltip: {
           trigger: 'axis',

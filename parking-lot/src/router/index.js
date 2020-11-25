@@ -6,6 +6,7 @@ import Log from '@/components/Log'
 import Setting from '@/components/Setting'
 import Home from '@/view/Home'
 import SellePage from '@/view/SellerPage'
+import TrendPage from '@/view/TrendPage'
 
 Vue.use(Router)
 
@@ -14,6 +15,10 @@ export default new Router({
     {
       path: '/sellerpage',
       component: SellePage
+    },
+    {
+      path: '/trendpage',
+      component: TrendPage
     },
     {
       path: '/',
