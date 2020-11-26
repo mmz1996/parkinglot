@@ -8,11 +8,21 @@ import Home from '@/view/Home'
 import SellePage from '@/view/SellerPage'
 import TrendPage from '@/view/TrendPage'
 import MapPage from '@/view/MapPage'
+import RankPage from '@/view/RankPage'
+import HotPage from '@/view/HotPage'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/rankpage',
+      component: RankPage
+    },
+    {
+      path: '/hotpage',
+      component: HotPage
+    },
     {
       path: '/sellerpage',
       component: SellePage
