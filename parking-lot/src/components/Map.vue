@@ -41,9 +41,6 @@ export default {
       const initOption = {
         title: {
           text: '   车场全国分布图',
-          textStyle: {
-            fontSize: 33
-          },
           left: 20,
           top: 20
         },
@@ -113,7 +110,7 @@ export default {
     },
     screenAdapter () {
       const titleFontSize = this.$refs.map.offsetWidth / 100 * 3.6
-      const adapaterOption = {
+      const adapterOption = {
         title: {
           textStyle: {
             fontSize: titleFontSize
@@ -128,7 +125,7 @@ export default {
           }
         }
       }
-      this.chartInstance.setOption(adapaterOption)
+      this.chartInstance.setOption(adapterOption)
       this.chartInstance.resize()
     }
   }

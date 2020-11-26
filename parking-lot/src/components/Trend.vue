@@ -22,9 +22,6 @@ export default {
       const initOption = {
         title: {
           text: '   车场收益走势图',
-          textStyle: {
-            fontSize: 33
-          },
           left: 20,
           top: 20
         },
@@ -113,7 +110,17 @@ export default {
       this.chartInstance.setOption(dataOption)
     },
     screenAdapter () {
-      const adapterOption = {}
+      this.titleFontSize = this.$refs.trend.offsetWidth / 100 * 3.6
+      const adapterOption = {
+        legend: {
+          itemWidth: this.titleFontSize,
+          itemHeight: this.titleFontSize,
+          itemGap: this.titleFontSize,
+          textStyle: {
+            fontSize: this.titleFontSize / 2
+          }
+        }
+      }
       this.chartInstance.setOption(adapterOption)
       this.chartInstance.resize()
     }

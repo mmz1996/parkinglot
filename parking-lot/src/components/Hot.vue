@@ -60,6 +60,7 @@ export default {
           top: 20
         },
         legend: {
+          left: 20,
           top: '15%',
           icon: 'circle'
         },

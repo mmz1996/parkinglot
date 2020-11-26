@@ -29,30 +29,33 @@ export default {
   },
   methods: {
     screenAdapter () {
-      const titleFontsize = this.$refs.trend.offsetWidth / 100 * 3.6
+      // console.log(this.$refs.seller_ref.offsetWidth)
+      const titleFontSize = this.$refs.seller.offsetWidth / 100 * 3.6
+      // 和分辨率大小相关的配置项
       const adapterOption = {
         title: {
           textStyle: {
-            fontSize: 33
+            fontSize: titleFontSize
           }
         },
         tooltip: {
           axisPointer: {
             lineStyle: {
-              width: titleFontsize
+              width: titleFontSize
             }
           }
         },
         series: [
           {
-            barWidth: titleFontsize,
+            barWidth: titleFontSize,
             itemStyle: {
-              barBorderRadius: [0, titleFontsize / 2, titleFontsize / 2, 0]
+              barBorderRadius: [0, titleFontSize / 2, titleFontSize / 2, 0]
             }
           }
         ]
       }
       this.chartInstance.setOption(adapterOption)
+      // 手动的调用图表对象的resize 才能产生效果
       this.chartInstance.resize()
     },
 
@@ -63,9 +66,6 @@ export default {
       const initOption = {
         title: {
           text: '   车场车位使用状况',
-          textStyle: {
-            fontSize: 33
-          },
           left: 20,
           top: 20
         },
@@ -74,7 +74,7 @@ export default {
           left: '3%',
           right: '6%',
           bottom: '3%',
-          containLabel: true
+          containLabel: true // 距离是包含坐标轴上的文字
         },
         xAxis: {
           type: 'value'
@@ -88,7 +88,6 @@ export default {
             type: 'line',
             z: 0,
             lineStyle: {
-              width: 66,
               color: '#2D3443'
             }
           }
@@ -96,7 +95,6 @@ export default {
         series: [
           {
             type: 'bar',
-            barWidth: 66,
             label: {
               show: true,
               position: 'right',
@@ -105,15 +103,19 @@ export default {
               }
             },
             itemStyle: {
+              // 指明颜色渐变的方向
               barBorderRadius: [0, 33, 33, 0],
+              // 指明不同百分比之下颜色的值
               color: new this.$echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                // 百分之0状态之下的颜色值
                 {
                   offset: 0,
                   color: '#5052EE'
                 },
+                // 百分之100状态之下的颜色值
                 {
                   offset: 1,
-                  color: '#AB6ee5'
+                  color: '#AB6EE5'
                 }
               ])
             }
