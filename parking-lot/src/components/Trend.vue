@@ -1,5 +1,7 @@
 <template>
   <div class="com-container">
+    <div class="title" :style="comStyle">
+    </div>
     <div class="com-chart" ref="trend"  style="width: 100%;height: 100%">
 
     </div>
@@ -7,6 +9,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { getThemeValue } from '@/utils/theme_utils'
 export default {
   name: 'Trend',
   data () {
@@ -18,7 +22,7 @@ export default {
   methods: {
     initChart () {
       const chart = this.$refs.trend
-      this.chartInstance = this.$echarts.init(chart, 'chalk')
+      this.chartInstance = this.$echarts.init(chart, this.theme)
       const initOption = {
         title: {
           text: '   车场收益走势图',
@@ -81,7 +85,7 @@ export default {
           type: 'line',
           data: item.data,
           areaStyle: {
-            color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1,[
+            color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
               {
                 color: colorArr1[index],
                 offset: 0
@@ -133,10 +137,41 @@ export default {
   },
   destroyed () {
     window.removeEventListener('reisze', this.screenAdapter)
+  },
+  computed: {
+    comStyle () {
+      return {
+        fontSize: this.titleFontSize + 'px',
+        color: getThemeValue(this.theme).titleColor
+      }
+    },
+    ...mapState(['theme'])
+  },
+  watch: {
+    theme () {
+      console.log('主题切换了')
+      this.chartInstance.dispose() // 销毁当前的图表
+      this.initChart() // 重新以最新的主题名称初始化图表对象
+      this.screenAdapter() // 完成屏幕的适配
+      this.updateChart() // 更新图表的展示
+    }
   }
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+  .title {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 10;
+    color: white;
+  .title-icon {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .select-con {
+    background-color: #222733;
+  }
+  }
 </style>

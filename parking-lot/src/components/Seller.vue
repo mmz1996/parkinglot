@@ -75,7 +75,7 @@ export default {
     // 初始化echartsInstance对象
     initChart () {
       const chart = this.$refs.seller
-      this.chartInstance = this.$echarts.init(chart, 'chalk')
+      this.chartInstance = this.$echarts.init(chart, this.theme)
       const initOption = {
         title: {
           text: '   车场车位使用状况',

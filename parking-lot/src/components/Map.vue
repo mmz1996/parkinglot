@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import {getProvinceMapInfo} from '../utils/map_utils'
 export default {
   name: 'Map',
@@ -34,7 +35,7 @@ export default {
       this.chartInstance.setOption(revertOption)
     },
     async initChart () {
-      this.chartInstance = this.$echarts.init(this.$refs.map, 'chalk')
+      this.chartInstance = this.$echarts.init(this.$refs.map, this.theme)
       // 获取中国的矢量数据
       const ret = await this.$axios.get('http://localhost:8080/static/map/china.json')
       this.$echarts.registerMap('china', ret.data)
@@ -127,6 +128,18 @@ export default {
       }
       this.chartInstance.setOption(adapterOption)
       this.chartInstance.resize()
+    }
+  },
+  computed: {
+    ...mapState(['theme'])
+  },
+  watch: {
+    theme () {
+      console.log('主题切换了')
+      this.chartInstance.dispose() // 销毁当前的图表
+      this.initChart() // 重新以最新的主题名称初始化图表对象
+      this.screenAdapter() // 完成屏幕的适配
+      this.updateChart() // 更新图表的展示
     }
   }
 }

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Stock',
   data () {
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     initChart () {
-      this.chartInstance = this.$echarts.init(this.$refs.stock, 'chalk')
+      this.chartInstance = this.$echarts.init(this.$refs.stock, this.theme)
       const initOption = {
         title: {
           text: '   车场车位使用情况图',
@@ -175,6 +176,18 @@ export default {
         }
         this.updateChart() // 在更改完currentIndex之后 , 需要更新界面
       }, 5000)
+    }
+  },
+  computed: {
+    ...mapState(['theme'])
+  },
+  watch: {
+    theme () {
+      console.log('主题切换了')
+      this.chartInstance.dispose() // 销毁当前的图表
+      this.initChart() // 重新以最新的主题名称初始化图表对象
+      this.screenAdapter() // 完成屏幕的适配
+      this.updateChart() // 更新图表的展示
     }
   }
 }

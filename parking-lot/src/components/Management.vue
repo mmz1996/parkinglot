@@ -1,12 +1,12 @@
 <template>
-  <div class="screen-container">
+  <div class="screen-container" :style="containerStyle">
     <header class="screen-header">
       <div>
-        <img src="static/img/header_border_dark.png" alt="">
+        <img :src="headerSrc" alt="">
       </div>
       <span class="title">JLU_PISP大数据平台</span>
       <div class="title-right">
-        <img src="/static/img/qiehuan_dark.png" class="qiehuan" @click="handleChangeTheme">
+        <img :src="themeSrc" class="qiehuan" @click="handleChangeTheme">
         <span class="datetime">2049-01-01 00:00:00</span>
       </div>
     </header>
@@ -67,6 +67,8 @@ import Rank from '@/components/Rank.vue'
 import Seller from '@/components/Seller.vue'
 import Stock from '@/components/Stock.vue'
 import Trend from '@/components/Trend.vue'
+import { mapState } from 'vuex'
+import { getThemeValue } from '@/utils/theme_utils'
 export default {
   components: {
     Hot,
@@ -108,6 +110,22 @@ export default {
   },
   mounted () {},
   computed: {
+    logoSrc () {
+      return '/static/img/' + getThemeValue(this.theme).logoSrc
+    },
+    headerSrc () {
+      return '/static/img/' + getThemeValue(this.theme).headerBorderSrc
+    },
+    themeSrc () {
+      return '/static/img/' + getThemeValue(this.theme).themeSrc
+    },
+    containerStyle () {
+      return {
+        backgroundColor: getThemeValue(this.theme).backgroundColor,
+        color: getThemeValue(this.theme).titleColor
+      }
+    },
+    ...mapState(['theme'])
   }
 }
 </script>

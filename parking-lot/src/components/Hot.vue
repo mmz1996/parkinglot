@@ -1,13 +1,15 @@
 <template>
-  <div class="com-container">
-    <div class="com-chart" ref="hot"></div>
-    <span class="iconfont arr-left" @click="toLeft" >&#xe6ef;</span>
-    <span class="iconfont arr-right" @click="toRight" >&#xe6ed;</span>
-    <span class="cat-name">{{ catName }}</span>
+  <div class='com-container'>
+    <div class='com-chart' ref='hot'></div>
+    <span class="iconfont arr-left" @click="toLeft" :style="comStyle">&#xe6ef;</span>
+    <span class="iconfont arr-right" @click="toRight" :style="comStyle">&#xe6ed;</span>
+    <span class="cat-name" :style="comStyle">{{ catName }}</span>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { getThemeValue } from '../utils/theme_utils'
 export default {
   name: 'Hot',
   data () {
@@ -31,7 +33,14 @@ export default {
       } else {
         return this.allData[this.currentIndex].name
       }
-    }
+    },
+    comStyle () {
+      return {
+        fontSize: this.titleFontSize + 'px',
+        color: getThemeValue(this.theme).titleColor
+      }
+    },
+    ...mapState(['theme'])
   },
   destroyed () {
     window.removeEventListener('resize', this.screenAdapter)
@@ -52,7 +61,7 @@ export default {
       this.updateChart()
     },
     initChart () {
-      this.chartInstance = this.$echarts.init(this.$refs.hot, 'chalk')
+      this.chartInstance = this.$echarts.init(this.$refs.hot, this.theme)
       const initOption = {
         title: {
           text: ' 停车场车位情况占比',
@@ -173,6 +182,15 @@ export default {
         this.currentIndex = 0
       }
       this.updateChart()
+    }
+  },
+  watch: {
+    theme () {
+      console.log('主题切换了')
+      this.chartInstance.dispose() // 销毁当前的图表
+      this.initChart() // 重新以最新的主题名称初始化图表对象
+      this.screenAdapter() // 完成屏幕的适配
+      this.updateChart() // 更新图表的展示
     }
   }
 }
