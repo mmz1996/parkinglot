@@ -10,6 +10,7 @@ import TrendPage from '@/view/TrendPage'
 import MapPage from '@/view/MapPage'
 import RankPage from '@/view/RankPage'
 import HotPage from '@/view/HotPage'
+import StockPage from '@/view/StockPage'
 
 Vue.use(Router)
 
@@ -18,6 +19,10 @@ export default new Router({
     {
       path: '/rankpage',
       component: RankPage
+    },
+    {
+      path: '/stockpage',
+      component: StockPage
     },
     {
       path: '/hotpage',
