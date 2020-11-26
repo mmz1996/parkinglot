@@ -8,6 +8,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/global.css'
 import './assets/font/iconfont.css'
+import store from './store'
 
 Vue.use(ElementUI)
 Vue.prototype.$axios = axios
@@ -17,6 +18,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>'

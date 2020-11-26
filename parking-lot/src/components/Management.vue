@@ -6,6 +6,7 @@
       </div>
       <span class="title">JLU_PISP大数据平台</span>
       <div class="title-right">
+        <img src="/static/img/qiehuan_dark.png" class="qiehuan" @click="handleChangeTheme">
         <span class="datetime">2049-01-01 00:00:00</span>
       </div>
     </header>
@@ -99,6 +100,10 @@ export default {
       this.$nextTick(() => {
         this.$refs[chartName].screenAdapter()
       })
+    },
+    handleChangeTheme () {
+      // 修改VueX中数据
+      this.$store.commit('changeTheme')
     }
   },
   mounted () {},
