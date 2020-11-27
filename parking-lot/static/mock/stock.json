@@ -1,0 +1,41 @@
+[{
+  "name": "匡亚明",
+  "stock": 500,
+  "sales": 200
+}, {
+  "name": "计算机",
+  "stock": 400,
+  "sales": 100
+}, {
+  "name": "鼎新东区",
+  "stock": 300,
+  "sales": 50
+}, {
+  "name": "鼎新西区",
+  "stock": 300,
+  "sales": 70
+}, {
+  "name": "超分子",
+  "stock": 100,
+  "sales": 50
+}, {
+  "name": "车场6",
+  "stock": 1000,
+  "sales": 888
+}, {
+  "name": "车场7",
+  "stock": 50,
+  "sales": 40
+}, {
+  "name": "车场8",
+  "stock": 1500,
+  "sales": 30
+}, {
+  "name": "车场9",
+  "stock": 100,
+  "sales": 99
+}, {
+  "name": "车场10",
+  "stock": 20,
+  "sales": 1
+}]

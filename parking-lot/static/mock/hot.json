@@ -1,0 +1,187 @@
+[
+  {
+    "name": "停车场车位总数量",
+    "children": [
+      {
+        "name": "匡亚明",
+        "value": 300,
+        "children": [
+          {
+            "name": "已使用车位",
+            "value": 100
+          },
+          {
+            "name": "未使用车位",
+            "value": 100
+          },
+          {
+            "name": "预定车位",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "name": "计算机",
+        "value": 200,
+        "children": [
+          {
+            "name": "已使用车位",
+            "value": 50
+          },
+          {
+            "name": "未使用车位",
+            "value": 75
+          },
+          {
+            "name": "预定车位",
+            "value": 75
+          }
+        ]
+      },
+      {
+        "name": "超分子",
+        "value": 30,
+        "children": [
+          {
+            "name": "已使用车位",
+            "value": 10
+          },
+          {
+            "name": "未使用车位",
+            "value": 10
+          },
+          {
+            "name": "预定车位",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "name": "鼎新东区",
+        "value": 60,
+        "children": [
+          {
+            "name": "已使用车位",
+            "value": 10
+          },
+          {
+            "name": "未使用车位",
+            "value": 40
+          },
+          {
+            "name": "预定车位",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "name": "鼎新西区",
+        "value": 400,
+        "children": [
+          {
+            "name": "已使用车位",
+            "value": 200
+          },
+          {
+            "name": "未使用车位",
+            "value": 100
+          },
+          {
+            "name": "预定车位",
+            "value": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "匡亚明",
+    "value": 300,
+    "children": [
+      {
+        "name": "已使用车位",
+        "value": 100
+      },
+      {
+        "name": "未使用车位",
+        "value": 100
+      },
+      {
+        "name": "预定车位",
+        "value": 100
+      }
+    ]
+  },
+  {
+    "name": "计算机",
+    "value": 200,
+    "children": [
+      {
+        "name": "已使用车位",
+        "value": 50
+      },
+      {
+        "name": "未使用车位",
+        "value": 75
+      },
+      {
+        "name": "预定车位",
+        "value": 75
+      }
+    ]
+  },
+    {
+    "name": "鼎新东区",
+    "value": 60,
+    "children": [
+      {
+        "name": "已使用车位",
+        "value": 10
+      },
+      {
+        "name": "未使用车位",
+        "value": 40
+      },
+      {
+        "name": "预定车位",
+        "value": 10
+      }
+    ]
+    },
+    {
+    "name": "鼎新西区",
+    "value": 400,
+    "children": [
+      {
+        "name": "已使用车位",
+        "value": 200
+      },
+      {
+        "name": "未使用车位",
+        "value": 100
+      },
+      {
+        "name": "预定车位",
+        "value": 100
+      }
+    ]
+    },
+    {
+      "name": "超分子",
+      "value": 30,
+      "children": [
+        {
+          "name": "已使用车位",
+          "value": 10
+        },
+        {
+          "name": "未使用车位",
+          "value": 10
+        },
+        {
+          "name": "预定车位",
+          "value": 10
+        }
+      ]
+    }
+]

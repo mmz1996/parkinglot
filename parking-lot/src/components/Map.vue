@@ -81,7 +81,7 @@ export default {
       })
     },
     async getData () {
-      const {data: ret} = await this.$axios.get('http://127.0.0.1:8888/api/map')
+      const {data: ret} = await this.$axios.get('/static/mock/map.json')
       this.allData = ret
       this.updateChart()
     },

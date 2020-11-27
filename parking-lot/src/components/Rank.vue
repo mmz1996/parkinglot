@@ -67,7 +67,7 @@ export default {
       })
     },
     async getData () {
-      const {data: ret} = await this.$axios.get('http://127.0.0.1:8888/api/rank')
+      const {data: ret} = await this.$axios.get('/static/mock/rank.json')
       this.allData = ret
       this.allData.sort((a, b) => {
         return a.value - b.value

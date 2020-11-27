@@ -114,7 +114,7 @@ export default {
     },
     async getData () {
       // 获取服务器的数据, 对this.allData进行赋值之后, 调用updateChart方法更新图表
-      const { data: ret } = await this.$axios.get('http://127.0.0.1:8888/api/hotproduct')
+      const { data: ret } = await this.$axios.get('/static/mock/hot.json')
       this.allData = ret
       console.log(this.allData)
       this.updateChart()

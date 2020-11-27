@@ -55,7 +55,7 @@ export default {
       this.chartInstance.setOption(initOption)
     },
     async getData () {
-      const {data: ret} = await this.$axios.get('http://127.0.0.1:8888/api/trend')
+      const {data: ret} = await this.$axios.get('/static/mock/trend.json')
       this.allData = ret
       this.updateChart()
     },
