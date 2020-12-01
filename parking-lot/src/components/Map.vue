@@ -6,7 +6,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import {getProvinceMapInfo} from '../utils/map_utils'
 export default {
   name: 'Map',
   data () {
@@ -37,7 +36,8 @@ export default {
     async initChart () {
       this.chartInstance = this.$echarts.init(this.$refs.map, this.theme)
       // 获取中国的矢量数据
-      const ret = await this.$axios.get('http://localhost:8080/static/map/china.json')
+      const ret = await this.$axios.get('/static/map/china.json')
+      console.log('获取地图数据成功')
       this.$echarts.registerMap('china', ret.data)
       const initOption = {
         title: {
@@ -50,62 +50,37 @@ export default {
           map: 'china',
           top: '5%',
           bottom: '5%',
-          itemStyle: {
-            areaColor: '#2E72BF',
-            borderColor: '#333'
+          label: {
+            show: true
           }
-        },
-        legend: {
-          left: '5%',
-          bottom: '5%',
-          orient: 'vertical'
         }
       }
       this.chartInstance.setOption(initOption)
-      this.chartInstance.on('click', async arg => {
-        console.log('点击成功')
-        const provinceInfo = getProvinceMapInfo(arg.name)
-        console.log(provinceInfo)
-        const ret = await this.$axios.get('http://localhost:8080' + provinceInfo.path)
-        if (!this.mapData[provinceInfo.key]) {
-          this.mapData[provinceInfo.key] = ret.data
-          console.log(ret)
-          this.$echarts.registerMap(provinceInfo.key, ret.data)
-        }
-        const changeOption = {
-          geo: {
-            map: provinceInfo.key
-          }
-        }
-        this.chartInstance.setOption(changeOption)
-      })
     },
     async getData () {
       const {data: ret} = await this.$axios.get('/static/mock/map.json')
       this.allData = ret
+      console.log('mmz' + this.allData)
       this.updateChart()
     },
-    updateChart () {
-      const legendArr = this.allData.map(item => {
-        return item.name
-      })
-      const seriesArr = this.allData.map(item => {
-        return {
-          rippleEffect: {
-            scale: 5,
-            brushType: 'stroke'
-          },
-          type: 'effectScatter',
-          name: item.name,
-          data: item.children,
-          coordinateSystem: 'geo'
-        }
-      })
+    async updateChart () {
+      const {data: ret} = await this.$axios.get('/static/mock/map.json')
+      this.allData = ret
       const dataOption = {
-        legend: {
-          data: legendArr
-        },
-        series: seriesArr
+        series: [
+          {
+            data: this.allData,
+            geoIndex: 0,
+            type: 'map'
+          }
+        ],
+        visualMap: {
+          min: 0,
+          max: 300,
+          inRange: {
+            color: ['white', 'blue']
+          }
+        }
       }
       this.chartInstance.setOption(dataOption)
     },
@@ -115,14 +90,6 @@ export default {
         title: {
           textStyle: {
             fontSize: titleFontSize
-          }
-        },
-        legend: {
-          itemWidth: titleFontSize / 2,
-          itemHeight: titleFontSize / 2,
-          itemGap: titleFontSize / 2,
-          textStyle: {
-            fontSize: titleFontSize / 2
           }
         }
       }

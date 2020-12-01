@@ -7,7 +7,7 @@
       <span class="title">JLU_PISP大数据平台</span>
       <div class="title-right">
         <img :src="themeSrc" class="qiehuan" @click="handleChangeTheme">
-        <span class="datetime">2049-01-01 00:00:00</span>
+        <span class="datetime">{{ date }}</span>
       </div>
     </header>
     <div class="screen-body">
@@ -82,6 +82,7 @@ export default {
   name: 'management',
   data () {
     return {
+      date: new Date(),
       // 定义每一个图表的全屏状态
       fullScreenStatus: {
         trend: false,
@@ -108,7 +109,12 @@ export default {
       this.$store.commit('changeTheme')
     }
   },
-  mounted () {},
+  mounted () {
+    let _this = this // 声明一个变量指向Vue实例this，保证作用域一致
+    this.timer = setInterval(() => {
+      _this.date = new Date() // 修改数据date
+    }, 1000)
+  },
   computed: {
     logoSrc () {
       return '/static/img/' + getThemeValue(this.theme).logoSrc
@@ -126,6 +132,11 @@ export default {
       }
     },
     ...mapState(['theme'])
+  },
+  beforeDestroy () {
+    if (this.timer) {
+      clearInterval(this.timer) // 在Vue实例销毁前，清除我们的定时器
+    }
   }
 }
 </script>
