@@ -7,7 +7,7 @@
       <span class="title">JLU_PISP大数据平台</span>
       <div class="title-right">
         <img :src="themeSrc" class="qiehuan" @click="handleChangeTheme">
-        <span class="datetime">{{ date }}</span>
+        <span class="datetime">{{  date | formaDate  }}</span>
       </div>
     </header>
     <div class="screen-body">
@@ -69,6 +69,10 @@ import Stock from '@/components/Stock.vue'
 import Trend from '@/components/Trend.vue'
 import { mapState } from 'vuex'
 import { getThemeValue } from '@/utils/theme_utils'
+
+var padaDate = function (value) {
+  return value < 10 ? '0' + value : value
+}
 export default {
   components: {
     Hot,
@@ -92,6 +96,19 @@ export default {
         hot: false,
         stock: false
       }
+    }
+  },
+  filters: {
+    // 设置一个函数来进行过滤
+    formaDate: function (value) {
+      var date = new Date()
+      var year = date.getFullYear()
+      var month = padaDate(date.getMonth() + 1)
+      var day = padaDate(date.getDate())
+      var hours = padaDate(date.getHours())
+      var minutes = padaDate(date.getMinutes())
+      var seconds = padaDate(date.getSeconds())
+      return year + '年' + month + '月' + day + '日' + hours + '时' + minutes + '分' + seconds + '秒'
     }
   },
   methods: {
