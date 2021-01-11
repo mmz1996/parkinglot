@@ -85,7 +85,7 @@ export default {
         zoom: 17,
         center: [125.27902, 43.822074],
         viewMode: '3D',
-        pitch: 65,
+        // pitch: 65,
         rotation: 20,
         resizeEnable: true
       })
